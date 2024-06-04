@@ -26,7 +26,7 @@ class ReadBook(models.Model):
 
     def total_fine(self):
         total = 0.00
-        if self.returned is False:
+        if self.returned:
             days_diff = (datetime.now().date() - self.issued).days
             if days_diff > 7:
                 total += 10 * (days_diff - 7)
@@ -39,5 +39,5 @@ class ReadBook(models.Model):
     def book_retuned(self):
         if not self.returned:
             self.returned = True
-            self.returned_at = datetime.now().date()
+            self.returned_at = datetime.now().date() + timedelta(days=10)
             self.save()

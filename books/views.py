@@ -116,7 +116,7 @@ def student_return_book(request,book_id):
         student_id = request.user.id
         student = User.objects.get(id=student_id)
         book = Book.objects.get(id=book_id)
-        book_record = ReadBook.objects.filter(student=student,book=book)
+        book_record = ReadBook.objects.filter(student=student,book=book,returned=False)
         for record in book_record:
             record.book_retuned()
         serializer = GetReadBookRecordSerilaizer(book_record,many=True)
@@ -124,7 +124,3 @@ def student_return_book(request,book_id):
     except Book.DoesNotExist:
         raise NotFound("Book is not found")
     
-@api_view(["GET"])
-@permission_classes([IsStudent])
-def student_all_info(request):
-    student = request.user
