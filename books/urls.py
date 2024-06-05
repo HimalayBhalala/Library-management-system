@@ -9,6 +9,7 @@ urlpatterns = [
     path("get/<int:id>/",views.get_one_book,name="one-book"),
     path("record/",views.get_record_of_all_issue_book,name="record-book"),
     path("student/get/<int:book_id>/",views.get_read_book,name="read-book"),
+    path("librarian/issue/<int:student_id>/<int:book_id>/",views.librarian_issued_book_to_student,name="librarian-issued"),
     path("student/get_book_record/",views.student_show_read_book,name="student-book-record"),
     path("student/return/<int:book_id>/",views.student_return_book,name="return-book")
 ]

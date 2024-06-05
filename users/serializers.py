@@ -9,11 +9,12 @@ class ProfileSerializer(serializers.ModelSerializer):
     is_staff = serializers.BooleanField(source="user.is_staff")
     is_active = serializers.BooleanField(source="user.is_active")
     is_superuser = serializers.BooleanField(source="user.is_superuser")
+    role = serializers.CharField(source="user.role")
     date_joined = serializers.DateTimeField(source="user.date_joined")
 
     class Meta:
         model = Profile
-        fields = ["id","username","first_name","last_name","is_staff","is_active","is_superuser","date_of_birth","date_joined"]
+        fields = ["id","username","first_name","last_name","is_staff","is_active","is_superuser","date_of_birth","role","date_joined"]
 
 
 class UserSerializer(serializers.ModelSerializer):

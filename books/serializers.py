@@ -17,8 +17,5 @@ class ReadBookSerializer(serializers.ModelSerializer):
         model = ReadBook
         fields = "__all__"
 
-class GetReadBookRecordSerilaizer(serializers.ModelSerializer):
-    book = BookSerializer()
-    class Meta:
-        model = ReadBook
-        fields = ["book","issued","returned","returned_at","fine"]
+
+
